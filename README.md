@@ -193,5 +193,3 @@ This will automatically create the database and all required tables.
 
 **Mallikarjuna K M**  
 Digital Lost & Found Management System
-
-

@@ -21,7 +21,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <nav class="navbar navbar-dark bg-dark">
     <div class="container justify-content-center">
         <span class="navbar-brand mb-0 h1 text-center">
-            Digital Lost & Found System
+            Digital Lost & Found Management System
         </span>
     </div>
 </nav>

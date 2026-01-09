@@ -90,21 +90,38 @@ if (isset($_POST['submit'])) {
     $notes = $_POST['verification_notes'];
     $username = $_SESSION['username'];
 
-    $sql = "INSERT INTO claims
-            (lost_id, found_id, claimant_name, verification_notes, claimed_by)
-            VALUES
-            ('$lost_id', '$found_id', '$name', '$notes', '$username')";
+    // STEP 1: Verify that this lost_id belongs to the logged-in user
+    $check_lost = $conn->query(
+        "SELECT lost_id FROM lost_items 
+         WHERE lost_id = '$lost_id' 
+         AND reported_by = '$username'"
+    );
 
-    if ($conn->query($sql)) {
-        echo "<div class='alert alert-success text-center'>
-                Claim submitted successfully. Await admin verification.
+    if ($check_lost->num_rows === 0) {
+        // Invalid lost_id or does not belong to this user
+        echo "<div class='alert alert-danger text-center'>
+                Invalid Lost Item ID. You can only claim items you reported as lost.
               </div>";
     } else {
-        echo "<div class='alert alert-danger text-center'>
-                Error submitting claim
-              </div>";
+
+        // STEP 2: Insert claim
+        $sql = "INSERT INTO claims
+                (lost_id, found_id, claimant_name, verification_notes, claimed_by)
+                VALUES
+                ('$lost_id', '$found_id', '$name', '$notes', '$username')";
+
+        if ($conn->query($sql)) {
+            echo "<div class='alert alert-success text-center'>
+                    Claim submitted successfully. Await admin verification.
+                  </div>";
+        } else {
+            echo "<div class='alert alert-danger text-center'>
+                    Error submitting claim
+                  </div>";
+        }
     }
 }
 ?>
+
 
 <?php include "../partials/footer.php"; ?>

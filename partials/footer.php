@@ -1,6 +1,6 @@
 <footer class="bg-dark text-white text-center py-3 mt-auto">
     <small>
-        © <?php echo date("Y"); ?> Digital Lost & Found System
+        © <?php echo date("Y"); ?> Digital Lost & Found Management System
     </small>
 </footer>
 

@@ -107,36 +107,6 @@ This project solves these issues by providing a **controlled, digital workflow**
 
 ---
 
-## 📁 Project Structure
-
-digital-lost-found/
-│
-├── admin/
-│ ├── login.php
-│ ├── dashboard.php
-│ ├── add-found-item.php
-│ ├── match-items.php
-│ ├── verify-claims.php
-│ ├── claim-logs.php
-│ └── admin-navbar.php
-│
-├── public/
-│ ├── login.php
-│ ├── dashboard.php
-│ ├── lost-report.php
-│ ├── claim-item.php
-│ ├── logout.php
-│ └── user-navbar.php
-│
-├── config/
-│ └── db.php
-│
-├── logs/
-│
-├── index.php
-├── .gitignore
-└── README.md
-
 ---
 
 ## ▶️ How to Run the Project Locally
@@ -185,26 +155,6 @@ http://localhost/digital-lost-found/
 
 ---
 
-## ⚠️ Limitations
-
-- No email notifications
-- No image upload for items
-- Credentials are not encrypted (suitable for academic projects)
-- Designed for local deployment
-
----
-
-## 🚀 Future Enhancements
-
-- Image upload for lost/found items
-- Email or SMS notifications
-- Database-based authentication
-- Deployment on cloud hosting
-- Advanced matching algorithms
-- Pagination and analytics dashboard
-
----
-
 ## 👨‍💻 Author
 
 **Mallikarjuna K M**  
@@ -212,6 +162,3 @@ Digital Lost & Found Management System
 
 ---
 
-## 📝 License
-
-This project is intended for **educational and demonstration purposes**.

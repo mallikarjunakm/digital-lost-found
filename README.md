@@ -88,24 +88,68 @@ This project solves these issues by providing a **controlled, digital workflow**
 ### Tables Used
 
 #### `lost_items`
-- Stores lost item reports
-- Linked to reporting user
-- Status lifecycle: `open → closed`
+Stores lost item reports submitted by users.
 
-#### `found_items`
-- Stores found items added by admin
-- Status lifecycle: `unclaimed → returned`
-
-#### `claims`
-- Links lost and found items
-- Tracks ownership claims
-- Status lifecycle: `pending → approved / rejected`
-
-#### `claim_logs`
-- Records admin actions
-- Maintains chronological audit trail
+**Key Attributes:**
+- `lost_id` – Primary key
+- `item_type`
+- `description`
+- `lost_location`
+- `lost_date`
+- `status` (`open`, `closed`)
+- `reported_by`
 
 ---
+
+#### `found_items`
+Stores items found and registered by the admin.
+
+**Key Attributes:**
+- `found_id` – Primary key
+- `item_type`
+- `description`
+- `found_location`
+- `found_date`
+- `status` (`unclaimed`, `returned`)
+
+---
+
+#### `claims`
+Manages ownership claims submitted by users.
+
+**Key Attributes:**
+- `claim_id` – Primary key
+- `lost_id` (FK)
+- `found_id` (FK)
+- `claimant_name`
+- `verification_notes`
+- `claimed_by`
+- `status` (`pending`, `approved`, `rejected`)
+
+---
+
+#### `claim_logs`
+Maintains an audit trail of admin actions.
+
+**Key Attributes:**
+- `log_id` – Primary key
+- `claim_id` (FK)
+- `action`
+- `timestamp`
+
+---
+
+## 🗄️ Database Setup
+
+To simplify setup for evaluators and reviewers, the complete database schema is provided as a SQL file.
+
+### Steps:
+1. Open **phpMyAdmin**
+2. Click the **Import** tab
+3. Select: database/lost_found_system.sql
+4. Click **Go**
+
+This will automatically create the database and all required tables.
 
 ---
 
@@ -117,21 +161,11 @@ This project solves these issues by providing a **controlled, digital workflow**
 
 ### Steps
 
-1. Place the project in:
-C:\xampp\htdocs\digital-lost-found
+1. Place the project inside: C:\xampp\htdocs\digital-lost-found
 
-2. Create a MySQL database:
-lost_found_system
+2. Configure database connection: config/db.php
 
-3. Create required tables (`lost_items`, `found_items`, `claims`, `claim_logs`)
-
-4. Configure database connection:
-config/db.php
-
-
-5. Open browser and go to:
-http://localhost/digital-lost-found/
-
+3. Open browser and go to: http://localhost/digital-lost-found/
 
 ---
 
@@ -158,7 +192,6 @@ http://localhost/digital-lost-found/
 ## 👨‍💻 Author
 
 **Mallikarjuna K M**  
-Digital Lost & Found Management System  
+Digital Lost & Found Management System
 
----
 
